@@ -7,4 +7,10 @@
   <url>
     <loc>https://REPLACE-WITH-YOUR-DOMAIN/inquiry.html</loc>
   </url>
+  <url>
+    <loc>https://REPLACE-WITH-YOUR-DOMAIN/signup.html</loc>
+  </url>
+  <url>
+    <loc>https://REPLACE-WITH-YOUR-DOMAIN/login.html</loc>
+  </url>
 </urlset>
