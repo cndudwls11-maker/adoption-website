@@ -4,19 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f8f7f2">
-  <meta name="description" content="포근 입양 문의 페이지에서 입양 준비와 관심 있는 아이에 대해 상담 신청을 작성해 보세요. 이 페이지는 신청 시연용으로 실제 정보를 전송하지 않습니다.">
+  <meta name="description" content="포근 입양 문의 게시판에서 궁금한 점을 게시글로 나누고, 입양을 준비하는 가족들의 이야기를 살펴보세요.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="포근">
-  <meta property="og:title" content="입양 문의하기 | 포근">
-  <meta property="og:description" content="새로운 가족을 맞이하기 전, 궁금한 점과 돌봄 계획을 나눠 주세요.">
-  <title>입양 문의하기 | 포근 — 새로운 가족을 만나는 곳</title>
+  <meta property="og:title" content="입양 문의 게시판 | 포근">
+  <meta property="og:description" content="새 가족을 맞이하기 전 궁금한 점을 문의 글로 남기고 입양 준비 이야기를 나눠 보세요.">
+  <title>입양 문의 게시판 | 포근 — 새로운 가족을 만나는 곳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="inquiry.css">
   <script src="inquiry.js" defer></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.PogeunInquiryBoard === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'inquiry.js';
+        script.dataset.localFallback = 'true';
+        document.head.appendChild(script);
+      }
+    });
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -24,7 +34,7 @@
   <header class="site-header">
     <nav class="container nav" aria-label="주요 메뉴">
       <a class="brand" href="index.html" aria-label="포근 홈"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a>
-      <div class="nav-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a class="button nav-button" href="index.html#animals">아이들 만나보기 <span aria-hidden="true">↗</span></a></div>
+      <div class="nav-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a class="inquiry-page-highlight" href="inquiry.html" aria-current="page">입양 문의 게시판</a><a class="button nav-button" href="index.html#animals">아이들 만나보기 <span aria-hidden="true">↗</span></a></div>
     </nav>
   </header>
 
@@ -32,52 +42,55 @@
     <section class="inquiry-hero">
       <div class="container inquiry-hero-inner">
         <a class="back-link" href="index.html#animals"><span aria-hidden="true">←</span> 가족 찾기로 돌아가기</a>
-        <p class="eyebrow">LET'S TALK ABOUT ADOPTION</p>
-        <h1>입양 문의하기</h1>
-        <p class="inquiry-lead">새로운 가족을 맞이하기 전, 궁금한 점이나 준비 중인 이야기를 들려주세요.<br>함께 살아갈 모든 가족과 충분히 상의한 뒤 작성해 주세요.</p>
+        <p class="eyebrow">ADOPTION Q&amp;A BOARD</p>
+        <h1>입양 문의 게시판</h1>
+        <p class="inquiry-lead">입양을 준비하며 궁금한 점을 게시글로 남겨 주세요.<br>서로의 경험과 질문을 나누며 새로운 가족을 맞이할 준비를 해봐요.</p>
       </div>
     </section>
 
-    <section class="inquiry-section" aria-labelledby="formHeading">
-      <div class="container inquiry-layout">
-        <aside class="inquiry-aside">
-          <div class="aside-card"><span class="aside-icon" aria-hidden="true">♥</span><h2>천천히, 신중하게</h2><p>입양은 아이의 남은 평생을 함께하는 약속이에요. 정답을 적기보다 지금의 상황과 계획을 솔직하게 들려주세요.</p></div>
-          <div class="aside-steps"><p class="aside-eyebrow">WHAT HAPPENS NEXT</p><h2>문의 후 진행 과정</h2><ol><li><span>01</span><div><strong>문의 내용 확인</strong><p>궁금한 점과 관심 있는 아이를 확인해요.</p></div></li><li><span>02</span><div><strong>보호소에 직접 상담</strong><p>실제 상담은 해당 아이를 보호하는 기관에 문의해 주세요.</p></div></li><li><span>03</span><div><strong>충분한 교감 후 결정</strong><p>아이와 가족 모두에게 좋은 선택인지 확인해요.</p></div></li></ol></div>
-          <p class="aside-help">실제 입양 절차와 접수처는 <a href="index.html#faq">자주 묻는 질문</a> 및 관할 보호소 안내를 확인해 주세요.</p>
-        </aside>
+    <section class="board-section" aria-labelledby="boardHeading">
+      <div class="container">
+        <div class="board-notice"><span class="board-notice-icon" aria-hidden="true">i</span><p><strong>시연용 게시판 안내</strong><br>게시글은 이 브라우저에만 저장되며, 다른 사람에게 공유되거나 서버로 전송되지 않습니다. 전화번호·이메일·주소 등 개인정보는 글에 적지 마세요. 실제 입양 문의는 해당 보호소에 직접 연락해 주세요.</p></div>
 
-        <div class="inquiry-form-card">
-          <div class="form-heading"><div><p class="eyebrow">YOUR MESSAGE</p><h2 id="formHeading">상담 내용을 작성해 주세요</h2></div><span class="required-note"><span aria-hidden="true">*</span> 필수 항목</span></div>
-          <div class="inquiry-demo-notice"><strong>시연용 문의 페이지</strong><span>작성 내용은 서버로 전송되거나 저장되지 않습니다. 실제 상담을 원하시면 관심 있는 동물의 보호소에 직접 문의해 주세요.</span></div>
-          <form id="inquiryForm" novalidate>
-            <fieldset class="form-group">
-              <legend>문의 유형 <span aria-hidden="true">*</span></legend>
-              <div class="radio-grid"><label class="radio-card"><input type="radio" name="inquiryType" value="입양 상담" required><span class="radio-card-icon" aria-hidden="true">🐾</span><span><strong>입양 상담</strong><small>가족이 되고 싶어요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="아이 정보 문의" required><span class="radio-card-icon" aria-hidden="true">💬</span><span><strong>아이 정보 문의</strong><small>성격·건강 등이 궁금해요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="입양 준비 문의" required><span class="radio-card-icon" aria-hidden="true">🏡</span><span><strong>입양 준비 문의</strong><small>준비 사항이 궁금해요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="기타 문의" required><span class="radio-card-icon" aria-hidden="true">✉️</span><span><strong>기타 문의</strong><small>그 외 궁금한 점이 있어요</small></span></label></div>
-              <p class="field-error" data-error-for="inquiryType" aria-live="polite"></p>
-            </fieldset>
+        <section class="board-list-panel" aria-labelledby="boardHeading">
+          <div class="board-heading">
+            <div><p class="eyebrow">COMMUNITY BOARD</p><h2 id="boardHeading">입양 문의 글</h2><p class="board-subtitle">입양을 고민하는 가족들의 질문을 살펴보고, 궁금한 점을 남겨 보세요.</p></div>
+            <button class="button write-button" id="openWriteButton" type="button"><span aria-hidden="true">＋</span> 글 작성하기</button>
+          </div>
 
-            <div class="form-row"><div class="form-field"><label for="applicantName">이름 <span aria-hidden="true">*</span></label><input id="applicantName" name="applicantName" type="text" autocomplete="name" maxlength="40" placeholder="이름을 입력해 주세요" required><p class="field-error" data-error-for="applicantName" aria-live="polite"></p></div><div class="form-field"><label for="applicantPhone">연락처 <span aria-hidden="true">*</span></label><input id="applicantPhone" name="applicantPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="010-0000-0000" required><p class="field-error" data-error-for="applicantPhone" aria-live="polite"></p></div></div>
+          <div class="board-toolbar">
+            <label class="board-search"><span aria-hidden="true">⌕</span><input id="boardSearch" type="search" placeholder="제목, 내용, 작성자 검색" aria-label="게시글 검색"></label>
+            <label class="visually-hidden" for="categoryFilter">문의 유형 필터</label><select id="categoryFilter" class="board-select"><option value="all">전체 문의</option><option value="입양 상담">입양 상담</option><option value="아이 정보">아이 정보</option><option value="입양 준비">입양 준비</option><option value="기타 문의">기타 문의</option></select>
+          </div>
 
-            <div class="form-row"><div class="form-field"><label for="applicantEmail">이메일 <span class="optional-label">선택</span></label><input id="applicantEmail" name="applicantEmail" type="email" autocomplete="email" maxlength="100" placeholder="example@email.com" aria-describedby="emailError"><p class="field-error" id="emailError" data-error-for="applicantEmail" aria-live="polite"></p></div><div class="form-field"><label for="householdSize">함께 사는 가족 수 <span class="optional-label">선택</span></label><select id="householdSize" name="householdSize"><option value="">선택해 주세요</option><option value="1">1명 (본인만)</option><option value="2">2명</option><option value="3">3명</option><option value="4">4명</option><option value="5">5명 이상</option></select></div></div>
+          <div class="board-table-wrap">
+            <table class="board-table"><thead><tr><th scope="col" class="board-col-number">번호</th><th scope="col" class="board-col-category">분류</th><th scope="col">제목</th><th scope="col" class="board-col-author">작성자</th><th scope="col" class="board-col-date">작성일</th><th scope="col" class="board-col-views">조회</th></tr></thead><tbody id="postList"></tbody></table>
+            <div class="board-empty" id="emptyState" hidden><span aria-hidden="true">🐾</span><strong>아직 등록된 문의 글이 없어요</strong><p>첫 번째 입양 문의 글을 남겨 보세요.</p><button class="button empty-write-button" id="emptyWriteButton" type="button">첫 글 작성하기</button></div>
+          </div>
+          <div class="board-bottom"><p class="post-count">총 <strong id="postCount">0</strong>개의 글</p><nav class="pagination" id="pagination" aria-label="게시글 페이지 이동"></nav></div>
+        </section>
 
-            <div class="form-row"><div class="form-field"><label for="petName">관심 있는 아이 이름 <span class="optional-label">선택</span></label><input id="petName" name="petName" type="text" maxlength="40" placeholder="예: 초코"></div><div class="form-field"><label for="petLocation">아이를 본 지역 <span class="optional-label">선택</span></label><select id="petLocation" name="petLocation"><option value="">선택해 주세요</option><option>서울</option><option>경기</option><option>인천</option><option>대전</option><option>부산</option><option>제주</option><option>기타 지역</option></select></div></div>
-
-            <div class="form-field"><label for="livingPlan">함께할 생활 계획 <span class="optional-label">선택</span></label><p class="field-hint">가족 동의 여부, 주거 환경, 돌봄 시간 등 준비 중인 내용을 적어주세요.</p><textarea id="livingPlan" name="livingPlan" rows="4" maxlength="1000" placeholder="아이와 함께할 하루를 어떻게 준비하고 계신가요?"></textarea><div class="character-count"><span id="messageCount">0</span> / 1,000자</div></div>
-
-            <div class="form-field"><label for="question">문의 내용 <span aria-hidden="true">*</span></label><textarea id="question" name="question" rows="5" minlength="10" maxlength="2000" placeholder="궁금한 점이나 담당자에게 전하고 싶은 내용을 10자 이상 적어주세요." required></textarea><div class="character-count"><span id="questionCount">0</span> / 2,000자</div><p class="field-error" data-error-for="question" aria-live="polite"></p></div>
-
-            <div class="privacy-box"><h3>개인정보 안내</h3><p>이 페이지는 시안이며, 입력 내용은 어디에도 전송·저장되지 않습니다. 아래 동의 확인은 화면 시연을 위한 항목입니다.</p><label class="consent-check"><input id="privacyConsent" name="privacyConsent" type="checkbox" required><span>안내 내용을 확인했고, 시연용 문의 양식 작성에 동의합니다. <strong>*</strong></span></label><p class="field-error" data-error-for="privacyConsent" aria-live="polite"></p></div>
-
-            <div class="form-actions"><a class="button button-outline" href="index.html#animals">취소</a><button class="button submit-button" type="submit">문의 내용 확인하기 <span aria-hidden="true">→</span></button></div>
+        <section class="write-panel" id="writePanel" aria-labelledby="writeHeading" hidden>
+          <div class="write-panel-heading"><div><p class="eyebrow">WRITE A QUESTION</p><h2 id="writeHeading">새 문의 글 작성</h2></div><button class="icon-button" id="closeWriteButton" type="button" aria-label="글 작성 닫기">×</button></div>
+          <div class="privacy-note"><strong>개인정보 보호 안내</strong><span>게시글은 공개 형식으로 목록에 표시됩니다. 연락처, 이메일, 상세 주소, 실명 등 개인정보를 본문에 작성하지 마세요. 비밀글 기능이나 실제 관리자도 없는 브라우저 시연용 게시판입니다.</span></div>
+          <form id="postForm" novalidate>
+            <div class="form-field"><label for="postCategory">문의 분류 <span class="required-mark">*</span></label><select id="postCategory" name="category" required><option value="">분류를 선택해 주세요</option><option value="입양 상담">입양 상담</option><option value="아이 정보">아이 정보</option><option value="입양 준비">입양 준비</option><option value="기타 문의">기타 문의</option></select><p class="field-error" id="postCategoryError" aria-live="polite"></p></div>
+            <div class="form-field"><label for="postTitle">제목 <span class="required-mark">*</span></label><input id="postTitle" name="title" type="text" maxlength="80" placeholder="문의 내용을 간단히 적어 주세요" required aria-describedby="titleCount"><div class="field-bottom"><p class="field-error" id="postTitleError" aria-live="polite"></p><span class="character-count"><span id="titleCount">0</span> / 80</span></div></div>
+            <div class="form-field"><label for="postAuthor">작성자 별명 <span class="required-mark">*</span></label><input id="postAuthor" name="author" type="text" maxlength="20" placeholder="게시판에 표시될 별명을 입력해 주세요" required aria-describedby="authorHint"><span class="field-hint" id="authorHint">실명이나 연락처 대신 별명을 사용해 주세요.</span><p class="field-error" id="postAuthorError" aria-live="polite"></p></div>
+            <div class="form-field"><label for="postContent">문의 내용 <span class="required-mark">*</span></label><textarea id="postContent" name="content" rows="8" minlength="10" maxlength="3000" placeholder="궁금한 점과 상황을 구체적으로 적어 주세요. 개인정보는 작성하지 마세요." required aria-describedby="contentCount"></textarea><div class="field-bottom"><p class="field-error" id="postContentError" aria-live="polite"></p><span class="character-count"><span id="contentCount">0</span> / 3,000</span></div></div>
+            <div class="privacy-note"><strong>글 삭제 안내</strong><span>이 게시판은 로그인 기능이 없는 시연용입니다. 글 삭제는 현재 브라우저에서 작성한 글에 한해 이 기기에서 가능합니다.</span></div>
+            <div class="write-actions"><button class="button button-outline" id="cancelWriteButton" type="button">취소</button><button class="button submit-button" type="submit">게시글 등록하기 <span aria-hidden="true">→</span></button></div>
           </form>
-        </div>
+        </section>
+
+        <section class="detail-panel" id="detailPanel" aria-labelledby="detailTitle" hidden><div class="detail-top"><button class="back-link detail-back" id="backToListButton" type="button"><span aria-hidden="true">←</span> 목록으로</button><button class="delete-post-button" id="deletePostButton" type="button">내 글 삭제</button></div><div class="detail-article"><div class="detail-meta"><span class="category-badge" id="detailCategory"></span><span id="detailDate"></span><span>조회 <span id="detailViews"></span></span></div><h2 id="detailTitle"></h2><div class="detail-author-line">작성자 <strong id="detailAuthor"></strong></div><div class="detail-content" id="detailContent"></div><div class="detail-help"><strong>답변 및 실제 입양 문의 안내</strong><p>이 게시판은 시연용이며 운영자 답변 기능이 없습니다. 실제 입양 가능 여부와 아이의 상세 정보는 보호 중인 기관에 직접 문의해 주세요.</p><a class="button button-outline" href="index.html#animals">가족 찾기</a></div></div></section>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a><p>작은 만남이 오래도록 이어지는 가족이 되기를.</p><div class="footer-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a href="inquiry.html">입양 문의</a></div></div></footer>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a><p>작은 만남이 오래도록 이어지는 가족이 되기를.</p><div class="footer-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a href="inquiry.html" aria-current="page">입양 문의 게시판</a></div></div></footer>
 
-  <div class="confirmation-backdrop" id="confirmationDialog" aria-hidden="true"><section class="confirmation-card" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle"><span class="confirmation-icon" aria-hidden="true">♥</span><p class="eyebrow">MESSAGE PREVIEW</p><h2 id="confirmationTitle">문의 내용 미리보기</h2><p id="confirmationMessage" class="confirmation-message"></p><p class="confirmation-disclaimer">이 페이지는 시연용입니다. 입력하신 문의는 실제로 접수되거나 저장되지 않았어요. 실제 입양 상담은 해당 보호소에 직접 문의해 주세요.</p><button class="button confirmation-close" id="closeConfirmation" type="button">확인</button></section></div>
-  <div class="toast" id="inquiryToast" role="status" aria-live="polite"></div>
+  <dialog class="password-dialog" id="passwordDialog" aria-labelledby="passwordDialogTitle"><form method="dialog" class="password-dialog-form"><button class="icon-button dialog-close" value="cancel" aria-label="창 닫기">×</button><p class="eyebrow">DELETE YOUR POST</p><h2 id="passwordDialogTitle">게시글 삭제</h2><p class="password-dialog-description">이 기기에 저장된 내 게시글을 삭제할까요?</p><p class="field-error" id="deleteError" aria-live="polite"></p><div class="dialog-actions"><button class="button button-outline" value="cancel">취소</button><button class="button danger-button" id="confirmDeleteButton" type="button">삭제하기</button></div></form></dialog>
+  <div class="toast" id="boardToast" role="status" aria-live="polite"></div>
 </body>
 </html>

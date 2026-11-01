@@ -56,28 +56,14 @@
         <div class="pet-photo">
           <img src="https://images.unsplash.com/${pet.image}?auto=format&fit=crop&w=650&q=80" alt="${escapeHTML(pet.name)} 사진" loading="lazy" style="object-position:${escapeHTML(pet.position)}">
           <span class="badge">${escapeHTML(pet.badge)}</span>
-          <button class="heart-button" type="button" aria-label="${escapeHTML(pet.name)} 찜하기" aria-pressed="false">♡</button>
         </div>
         <div class="pet-details">
           <div class="pet-title"><h3>${escapeHTML(pet.name)}</h3><span class="pet-gender">${escapeHTML(pet.gender)}</span></div>
           <div class="pet-meta"><span>${escapeHTML(pet.breed)}</span><span>${pet.age}살</span><span>${escapeHTML(pet.region)}</span></div>
           <p class="shelter-name">⌖ ${escapeHTML(pet.shelter)}</p>
-          <button class="apply-button" type="button" data-pet-id="${pet.id}">입양 상담 신청하기 →</button>
+          <a class="apply-button" href="inquiry.html?pet=${encodeURIComponent(pet.name)}">입양 문의 글 작성하기 →</a>
         </div>
       </article>`).join('');
-  }
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add('visible');
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove('visible'), 3300);
-  }
-
-  function closeModal() {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
   }
 
   typeButtons.forEach((button) => {
@@ -95,48 +81,6 @@
   [regionFilter, searchInput, sortSelect].forEach((control) => {
     control.addEventListener('input', renderPets);
     control.addEventListener('change', renderPets);
-  });
-
-  cards.addEventListener('click', (event) => {
-    const heartButton = event.target.closest('.heart-button');
-    if (heartButton) {
-      const isSaved = heartButton.getAttribute('aria-pressed') !== 'true';
-      heartButton.setAttribute('aria-pressed', String(isSaved));
-      heartButton.classList.toggle('saved', isSaved);
-      heartButton.textContent = isSaved ? '♥' : '♡';
-      showToast(isSaved ? '마음에 드는 아이를 찜했어요.' : '찜 목록에서 뺐어요.');
-      return;
-    }
-
-    const applyButton = event.target.closest('.apply-button');
-    if (!applyButton) return;
-    const pet = pets.find((item) => item.id === Number(applyButton.dataset.petId));
-    if (!pet) return;
-
-    document.getElementById('selectedPet').innerHTML = `
-      <img src="https://images.unsplash.com/${pet.image}?auto=format&fit=crop&w=140&q=75" alt="">
-      <div><strong>${escapeHTML(pet.name)} · ${escapeHTML(pet.breed)}</strong>
-      <span>${pet.age}살 · ${escapeHTML(pet.region)} · ${escapeHTML(pet.shelter)}</span></div>`;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    document.getElementById('applicantName').focus();
-  });
-
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal || event.target.closest('.modal-close')) closeModal();
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
-  });
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    closeModal();
-    form.reset();
-    showToast('상담 신청 시연이 완료됐어요. 데모 페이지라 실제 접수되지는 않습니다.');
   });
 
   renderPets();
