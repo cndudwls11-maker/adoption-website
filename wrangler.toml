@@ -1,0 +1,17 @@
+# Pages project settings downloaded from the existing Cloudflare dashboard.
+name = "adoption-website"
+pages_build_output_dir = ".wrangler/pages-dist"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "adoption-website-db"
+database_id = "b091af95-9d6d-46cc-a4ba-f0f60e4c117d"
+migrations_dir = "migrations"
+
+[env.production]
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "adoption-website-db"
+database_id = "b091af95-9d6d-46cc-a4ba-f0f60e4c117d"
+migrations_dir = "migrations"
