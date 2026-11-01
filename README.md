@@ -11,6 +11,7 @@
 - 이름·품종·지역·보호소 검색
 - 나이순 정렬 및 관심 동물 찜하기
 - 동물별 입양 상담 모달과 필수 입력값 검증
+- 입양 관련 문의 전용 페이지와 문의 내용 미리보기
 - 데스크톱과 모바일 화면에 대응하는 반응형 디자인
 - 입양 절차 안내와 자주 묻는 질문
 - 키보드 탐색을 위한 본문 건너뛰기 링크와 접근 가능한 입력 레이블
@@ -25,6 +26,7 @@ GitHub 저장소: <https://github.com/cndudwls11-maker/adoption-website>
 
 1. 저장소를 내려받거나 복제합니다.
 2. `index.html`을 웹 브라우저에서 엽니다.
+3. 입양 문의 페이지는 `inquiry.html`을 열거나 홈페이지 내비게이션에서 **입양 문의**를 선택합니다.
 
 또는 프로젝트 폴더에서 간단한 로컬 서버를 실행합니다.
 
@@ -38,15 +40,18 @@ python -m http.server 8000
 
 ```text
 adoption-website/
-├── index.html   # 페이지 구조, 메타 정보, 입양 안내 및 신청 폼
-├── style.css    # 색상, 레이아웃, 반응형 스타일
-├── script.js    # 예시 동물 데이터, 검색·필터 및 화면 상호작용
+├── index.html   # 메인 페이지 및 입양 동물 목록
+├── style.css    # 공통 색상, 레이아웃, 반응형 스타일
+├── script.js    # 예시 동물 데이터, 검색·필터 및 메인 화면 상호작용
+├── inquiry.html # 입양 문의 페이지 및 문의 입력 폼
+├── inquiry.css  # 입양 문의 페이지 전용 스타일
+├── inquiry.js   # 입력 검증 및 문의 내용 미리보기 시연
 ├── robots.txt   # 협조적인 크롤러에 사이트 페이지 접근 허용을 알리는 규칙
 ├── sitemap.xml  # 크롤러에 사이트의 대표 URL을 안내하는 사이트맵
 └── README.md    # 프로젝트 설명과 실행 방법
 ```
 
-`robots.txt`는 `https://<도메인>/robots.txt`, 사이트맵은 `https://<도메인>/sitemap.xml` 경로에서 제공되어야 합니다. 현재 두 파일에는 배포 도메인 자리표시자 `example.com`이 들어 있으므로, 실제 공개 도메인에 배포하기 전에 `robots.txt`와 `sitemap.xml`에서 반드시 실제 도메인으로 바꿔 주세요. GitHub Pages는 현재 저장소에서 활성화되어 있지 않으므로 실제 서비스 주소가 아직 설정되지 않았습니다. `robots.txt`는 공개 사이트의 크롤링 안내일 뿐이며 접근을 강제하거나 제한하는 보안 수단은 아닙니다.
+`robots.txt`는 사이트 루트의 `/robots.txt`, 사이트맵은 `/sitemap.xml` 경로에서 제공되어야 합니다. 현재 GitHub Pages는 이 저장소에서 활성화되어 있지 않으므로 공개 사이트 주소는 아직 설정되지 않았습니다. 사이트맵에는 메인 페이지와 문의 페이지를 위한 URL 항목을 추가했습니다. 배포 시 `sitemap.xml` 안의 `REPLACE-WITH-YOUR-DOMAIN`을 실제 도메인으로 바꾸고, `robots.txt`에 `Sitemap: https://실제-도메인/sitemap.xml`을 추가해 주세요. `robots.txt`는 공개 사이트의 크롤링 안내일 뿐이며 접근을 강제하거나 제한하는 보안 수단은 아닙니다.
 
 ## 기술 스택
 
@@ -55,6 +60,7 @@ adoption-website/
 - Vanilla JavaScript (별도 라이브러리 없이 동작)
 - Google Fonts: DM Sans, Noto Sans KR
 - 동물 예시 이미지: Unsplash 원격 이미지
+- 문의 양식: 프런트엔드 시연용 (서버 전송·저장 없음)
 
 ## 실제 입양 서비스로 확장할 때
 

@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Allow: /index.html
-Sitemap: https://example.com/sitemap.xml

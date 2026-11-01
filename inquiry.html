@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="포근 입양 문의 페이지에서 입양 준비와 관심 있는 아이에 대해 상담 신청을 작성해 보세요. 이 페이지는 신청 시연용으로 실제 정보를 전송하지 않습니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="포근">
+  <meta property="og:title" content="입양 문의하기 | 포근">
+  <meta property="og:description" content="새로운 가족을 맞이하기 전, 궁금한 점과 돌봄 계획을 나눠 주세요.">
+  <title>입양 문의하기 | 포근 — 새로운 가족을 만나는 곳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="inquiry.css">
+  <script src="inquiry.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="announcement">오늘도 <strong>새로운 가족</strong>을 기다리는 아이들이 있어요. <span aria-hidden="true">♥</span></div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="주요 메뉴">
+      <a class="brand" href="index.html" aria-label="포근 홈"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a>
+      <div class="nav-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a class="button nav-button" href="index.html#animals">아이들 만나보기 <span aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="inquiry-hero">
+      <div class="container inquiry-hero-inner">
+        <a class="back-link" href="index.html#animals"><span aria-hidden="true">←</span> 가족 찾기로 돌아가기</a>
+        <p class="eyebrow">LET'S TALK ABOUT ADOPTION</p>
+        <h1>입양 문의하기</h1>
+        <p class="inquiry-lead">새로운 가족을 맞이하기 전, 궁금한 점이나 준비 중인 이야기를 들려주세요.<br>함께 살아갈 모든 가족과 충분히 상의한 뒤 작성해 주세요.</p>
+      </div>
+    </section>
+
+    <section class="inquiry-section" aria-labelledby="formHeading">
+      <div class="container inquiry-layout">
+        <aside class="inquiry-aside">
+          <div class="aside-card"><span class="aside-icon" aria-hidden="true">♥</span><h2>천천히, 신중하게</h2><p>입양은 아이의 남은 평생을 함께하는 약속이에요. 정답을 적기보다 지금의 상황과 계획을 솔직하게 들려주세요.</p></div>
+          <div class="aside-steps"><p class="aside-eyebrow">WHAT HAPPENS NEXT</p><h2>문의 후 진행 과정</h2><ol><li><span>01</span><div><strong>문의 내용 확인</strong><p>궁금한 점과 관심 있는 아이를 확인해요.</p></div></li><li><span>02</span><div><strong>보호소에 직접 상담</strong><p>실제 상담은 해당 아이를 보호하는 기관에 문의해 주세요.</p></div></li><li><span>03</span><div><strong>충분한 교감 후 결정</strong><p>아이와 가족 모두에게 좋은 선택인지 확인해요.</p></div></li></ol></div>
+          <p class="aside-help">실제 입양 절차와 접수처는 <a href="index.html#faq">자주 묻는 질문</a> 및 관할 보호소 안내를 확인해 주세요.</p>
+        </aside>
+
+        <div class="inquiry-form-card">
+          <div class="form-heading"><div><p class="eyebrow">YOUR MESSAGE</p><h2 id="formHeading">상담 내용을 작성해 주세요</h2></div><span class="required-note"><span aria-hidden="true">*</span> 필수 항목</span></div>
+          <div class="inquiry-demo-notice"><strong>시연용 문의 페이지</strong><span>작성 내용은 서버로 전송되거나 저장되지 않습니다. 실제 상담을 원하시면 관심 있는 동물의 보호소에 직접 문의해 주세요.</span></div>
+          <form id="inquiryForm" novalidate>
+            <fieldset class="form-group">
+              <legend>문의 유형 <span aria-hidden="true">*</span></legend>
+              <div class="radio-grid"><label class="radio-card"><input type="radio" name="inquiryType" value="입양 상담" required><span class="radio-card-icon" aria-hidden="true">🐾</span><span><strong>입양 상담</strong><small>가족이 되고 싶어요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="아이 정보 문의" required><span class="radio-card-icon" aria-hidden="true">💬</span><span><strong>아이 정보 문의</strong><small>성격·건강 등이 궁금해요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="입양 준비 문의" required><span class="radio-card-icon" aria-hidden="true">🏡</span><span><strong>입양 준비 문의</strong><small>준비 사항이 궁금해요</small></span></label><label class="radio-card"><input type="radio" name="inquiryType" value="기타 문의" required><span class="radio-card-icon" aria-hidden="true">✉️</span><span><strong>기타 문의</strong><small>그 외 궁금한 점이 있어요</small></span></label></div>
+              <p class="field-error" data-error-for="inquiryType" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="form-row"><div class="form-field"><label for="applicantName">이름 <span aria-hidden="true">*</span></label><input id="applicantName" name="applicantName" type="text" autocomplete="name" maxlength="40" placeholder="이름을 입력해 주세요" required><p class="field-error" data-error-for="applicantName" aria-live="polite"></p></div><div class="form-field"><label for="applicantPhone">연락처 <span aria-hidden="true">*</span></label><input id="applicantPhone" name="applicantPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="010-0000-0000" required><p class="field-error" data-error-for="applicantPhone" aria-live="polite"></p></div></div>
+
+            <div class="form-row"><div class="form-field"><label for="applicantEmail">이메일 <span class="optional-label">선택</span></label><input id="applicantEmail" name="applicantEmail" type="email" autocomplete="email" maxlength="100" placeholder="example@email.com" aria-describedby="emailError"><p class="field-error" id="emailError" data-error-for="applicantEmail" aria-live="polite"></p></div><div class="form-field"><label for="householdSize">함께 사는 가족 수 <span class="optional-label">선택</span></label><select id="householdSize" name="householdSize"><option value="">선택해 주세요</option><option value="1">1명 (본인만)</option><option value="2">2명</option><option value="3">3명</option><option value="4">4명</option><option value="5">5명 이상</option></select></div></div>
+
+            <div class="form-row"><div class="form-field"><label for="petName">관심 있는 아이 이름 <span class="optional-label">선택</span></label><input id="petName" name="petName" type="text" maxlength="40" placeholder="예: 초코"></div><div class="form-field"><label for="petLocation">아이를 본 지역 <span class="optional-label">선택</span></label><select id="petLocation" name="petLocation"><option value="">선택해 주세요</option><option>서울</option><option>경기</option><option>인천</option><option>대전</option><option>부산</option><option>제주</option><option>기타 지역</option></select></div></div>
+
+            <div class="form-field"><label for="livingPlan">함께할 생활 계획 <span class="optional-label">선택</span></label><p class="field-hint">가족 동의 여부, 주거 환경, 돌봄 시간 등 준비 중인 내용을 적어주세요.</p><textarea id="livingPlan" name="livingPlan" rows="4" maxlength="1000" placeholder="아이와 함께할 하루를 어떻게 준비하고 계신가요?"></textarea><div class="character-count"><span id="messageCount">0</span> / 1,000자</div></div>
+
+            <div class="form-field"><label for="question">문의 내용 <span aria-hidden="true">*</span></label><textarea id="question" name="question" rows="5" minlength="10" maxlength="2000" placeholder="궁금한 점이나 담당자에게 전하고 싶은 내용을 10자 이상 적어주세요." required></textarea><div class="character-count"><span id="questionCount">0</span> / 2,000자</div><p class="field-error" data-error-for="question" aria-live="polite"></p></div>
+
+            <div class="privacy-box"><h3>개인정보 안내</h3><p>이 페이지는 시안이며, 입력 내용은 어디에도 전송·저장되지 않습니다. 아래 동의 확인은 화면 시연을 위한 항목입니다.</p><label class="consent-check"><input id="privacyConsent" name="privacyConsent" type="checkbox" required><span>안내 내용을 확인했고, 시연용 문의 양식 작성에 동의합니다. <strong>*</strong></span></label><p class="field-error" data-error-for="privacyConsent" aria-live="polite"></p></div>
+
+            <div class="form-actions"><a class="button button-outline" href="index.html#animals">취소</a><button class="button submit-button" type="submit">문의 내용 확인하기 <span aria-hidden="true">→</span></button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a><p>작은 만남이 오래도록 이어지는 가족이 되기를.</p><div class="footer-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="index.html#faq">자주 묻는 질문</a><a href="inquiry.html">입양 문의</a></div></div></footer>
+
+  <div class="confirmation-backdrop" id="confirmationDialog" aria-hidden="true"><section class="confirmation-card" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle"><span class="confirmation-icon" aria-hidden="true">♥</span><p class="eyebrow">MESSAGE PREVIEW</p><h2 id="confirmationTitle">문의 내용 미리보기</h2><p id="confirmationMessage" class="confirmation-message"></p><p class="confirmation-disclaimer">이 페이지는 시연용입니다. 입력하신 문의는 실제로 접수되거나 저장되지 않았어요. 실제 입양 상담은 해당 보호소에 직접 문의해 주세요.</p><button class="button confirmation-close" id="closeConfirmation" type="button">확인</button></section></div>
+  <div class="toast" id="inquiryToast" role="status" aria-live="polite"></div>
+</body>
+</html>
