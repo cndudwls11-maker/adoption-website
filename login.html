@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="포근 로그인 화면 시안입니다. 실제 로그인 처리는 아직 연결되지 않았습니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="포근">
+  <meta property="og:title" content="로그인 | 포근">
+  <meta property="og:description" content="포근에 로그인해 새로운 가족 찾기를 이어가 보세요.">
+  <title>로그인 | 포근 — 새로운 가족을 만나는 곳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="announcement">오늘도 <strong>새로운 가족</strong>을 기다리는 아이들이 있어요. <span aria-hidden="true">♥</span></div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="주요 메뉴">
+      <a class="brand" href="index.html" aria-label="포근 홈"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a>
+      <div class="nav-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="inquiry.html">입양 문의 게시판</a><a class="button nav-button" href="signup.html">회원가입</a></div>
+    </nav>
+  </header>
+
+  <main id="main" class="auth-main login-main">
+    <section class="login-layout container" aria-labelledby="loginTitle">
+      <div class="login-decoration" aria-hidden="true"><span class="login-heart">♥</span><p>다시 만나 반가워요</p><span class="login-paws">🐾</span></div>
+      <section class="auth-card login-card">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 포근 홈으로</a>
+        <div class="auth-card-heading"><div><p class="eyebrow">WELCOME BACK</p><h1 id="loginTitle">로그인</h1><p class="login-subtitle">포근에서 새로운 가족 찾기를 이어가 보세요.</p></div></div>
+        <div class="auth-demo-notice"><strong>디자인 시안 안내</strong><span>실제 사용자 인증은 연결되지 않았습니다. 실제 이메일이나 비밀번호를 입력하지 마세요.</span></div>
+        <form class="auth-form" action="#" method="get">
+          <div class="auth-field"><label for="loginEmail">이메일 주소</label><input id="loginEmail" name="email" type="email" autocomplete="username" placeholder="가입한 이메일 주소" required></div>
+          <div class="auth-field"><label for="loginPassword">비밀번호</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="비밀번호를 입력해 주세요" required></div>
+          <div class="login-options"><label class="remember-option"><input type="checkbox" name="remember"><span>로그인 상태 유지</span></label><span class="text-link muted-link">비밀번호 찾기 <span aria-hidden="true">(준비 중)</span></span></div>
+          <button class="button auth-submit" type="submit">로그인 시안 확인하기 <span aria-hidden="true">→</span></button>
+        </form>
+        <div class="login-divider"><span>처음 오셨나요?</span></div>
+        <a class="button button-outline signup-link-button" href="signup.html">포근 회원가입</a>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a><p>작은 만남이 오래도록 이어지는 가족이 되기를.</p><div class="footer-links"><a href="index.html#animals">가족 찾기</a><a href="inquiry.html">입양 문의 게시판</a><a href="signup.html">회원가입</a></div></div></footer>
+</body>
+</html>

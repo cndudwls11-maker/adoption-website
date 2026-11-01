@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="포근 회원가입 화면 시안입니다. 닉네임, 이메일, 성별, 거주 주소를 입력해 새 가족 찾기를 시작해 보세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="포근">
+  <meta property="og:title" content="회원가입 | 포근">
+  <meta property="og:description" content="새로운 가족을 만나는 곳, 포근 회원으로 가입해 보세요.">
+  <title>회원가입 | 포근 — 새로운 가족을 만나는 곳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <div class="announcement">오늘도 <strong>새로운 가족</strong>을 기다리는 아이들이 있어요. <span aria-hidden="true">♥</span></div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="주요 메뉴">
+      <a class="brand" href="index.html" aria-label="포근 홈"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a>
+      <div class="nav-links"><a href="index.html#animals">가족 찾기</a><a href="index.html#process">입양 안내</a><a href="inquiry.html">입양 문의 게시판</a><a class="button nav-button" href="login.html">로그인</a></div>
+    </nav>
+  </header>
+
+  <main id="main" class="auth-main">
+    <section class="auth-layout container" aria-labelledby="signupTitle">
+      <aside class="auth-intro">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 포근 홈으로</a>
+        <p class="eyebrow">JOIN OUR FAMILY</p>
+        <h1>새로운 인연을<br><span>시작해 볼까요?</span></h1>
+        <p class="auth-intro-copy">포근에 오신 것을 환영해요.<br>회원가입 화면을 미리 확인해 보세요.</p>
+        <div class="auth-paw-art" aria-hidden="true">🐾</div>
+        <p class="auth-quote">“한 아이의 세상이<br>당신을 만나 달라질 수 있어요.”</p>
+      </aside>
+
+      <section class="auth-card">
+        <div class="auth-card-heading">
+          <div><p class="eyebrow">CREATE AN ACCOUNT</p><h2 id="signupTitle">회원가입</h2></div>
+          <span class="auth-required-note"><span aria-hidden="true">*</span> 필수 입력</span>
+        </div>
+        <div class="auth-demo-notice"><strong>디자인 시안 안내</strong><span>HTML·CSS로 제작한 화면 예시입니다. 입력 정보는 저장·전송되지 않으며, 실제 회원가입 기능은 아직 연결되지 않았습니다. 특히 집 주소는 이 시안에 실제 주소를 입력하지 마세요.</span></div>
+
+        <form class="auth-form" action="#" method="get">
+          <div class="auth-field"><label for="nickname">닉네임 <span class="required-mark">*</span></label><input id="nickname" name="nickname" type="text" autocomplete="nickname" minlength="2" maxlength="20" placeholder="게시판에서 사용할 별명을 입력해 주세요" required><span class="auth-field-hint">2~20자까지 입력할 수 있어요.</span></div>
+          <div class="auth-field"><label for="email">이메일 주소 <span class="required-mark">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="example@email.com" required></div>
+          <div class="auth-field"><label>성별 <span class="required-mark">*</span></label><div class="gender-options"><label class="gender-option"><input name="gender" type="radio" value="female" required><span>여성</span></label><label class="gender-option"><input name="gender" type="radio" value="male"><span>남성</span></label><label class="gender-option"><input name="gender" type="radio" value="prefer-not-to-say"><span>응답하지 않음</span></label></div></div>
+          <div class="auth-field"><label for="address">집 주소 <span class="required-mark">*</span></label><input id="address" name="address" type="text" autocomplete="street-address" maxlength="200" placeholder="시·도, 시·군·구, 상세 주소" required><span class="auth-field-hint">개인정보를 포함하는 항목입니다. 실제 주소를 입력하거나 제출하지 마세요.</span></div>
+          <div class="auth-field"><label for="password">비밀번호 <span class="required-mark">*</span></label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="8자 이상 입력해 주세요" required><span class="auth-field-hint">실제 비밀번호를 이 시안에 입력하지 마세요.</span></div>
+          <div class="auth-field"><label for="passwordConfirm">비밀번호 확인 <span class="required-mark">*</span></label><input id="passwordConfirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="비밀번호를 다시 입력해 주세요" required></div>
+          <label class="auth-consent"><input type="checkbox" name="privacyConsent" required><span>개인정보 수집 및 이용에 동의합니다. <span class="required-mark">*</span><small>화면 시안이며 실제 저장·전송 또는 회원가입은 진행되지 않습니다.</small></span></label>
+          <button class="button auth-submit" type="submit">회원가입 시안 확인하기 <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="auth-switch">이미 회원이신가요? <a href="login.html">로그인</a></p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-icon" aria-hidden="true">♥</span><span>포근</span></a><p>작은 만남이 오래도록 이어지는 가족이 되기를.</p><div class="footer-links"><a href="index.html#animals">가족 찾기</a><a href="inquiry.html">입양 문의 게시판</a><a href="login.html">로그인</a></div></div></footer>
+</body>
+</html>
