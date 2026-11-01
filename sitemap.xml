@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- TODO: 배포 후 example.com을 실제 공개 도메인으로 교체하세요. -->
+  <!-- example.com URL은 임시 자리표시자이며, 이 상태로 실제 사이트에 제출하지 마세요. -->
+  <url>
+    <loc>https://example.com/</loc>
+  </url>
+  <url>
+    <loc>https://example.com/index.html</loc>
+  </url>
+</urlset>
