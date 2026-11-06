@@ -1,6 +1,6 @@
 # Pages project settings downloaded from the existing Cloudflare dashboard.
 name = "adoption-website"
-pages_build_output_dir = "."
+pages_build_output_dir = "./dist"
 compatibility_date = "2026-11-01"
 
 [[d1_databases]]

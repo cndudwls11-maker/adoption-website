@@ -58,6 +58,7 @@
           nickname: document.getElementById('nickname').value.trim(),
           email: document.getElementById('email').value.trim(),
           gender: signupForm.elements.gender.value,
+          password,
         });
         showStatus('회원가입이 완료되었습니다. 로그인 상태로 이동합니다.');
         window.setTimeout(() => { window.location.href = 'index.html'; }, 900);
@@ -80,6 +81,7 @@
         await sendJson('/api/auth/login', {
           email: document.getElementById('loginEmail').value.trim(),
           password: document.getElementById('loginPassword').value,
+          remember: loginForm.elements.remember.checked,
         });
         showStatus('로그인되었습니다.');
         window.setTimeout(() => { window.location.href = 'index.html'; }, 700);
@@ -121,8 +123,15 @@
         logout.textContent = '로그아웃';
         slot.replaceChildren(label, logout);
         logout.addEventListener('click', async () => {
-          await sendJson('/api/auth/logout', {});
-          window.location.reload();
+          logout.disabled = true;
+          try {
+            await sendJson('/api/auth/logout', {});
+            window.location.reload();
+          } catch (error) {
+            logout.disabled = false;
+            logout.textContent = '로그아웃 다시 시도';
+            showStatus(error.message, true);
+          }
         });
       });
     } catch {

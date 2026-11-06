@@ -34,7 +34,7 @@
         <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 포근 홈으로</a>
         <p class="eyebrow">JOIN OUR FAMILY</p>
         <h1>새로운 인연을<br><span>시작해 볼까요?</span></h1>
-        <p class="auth-intro-copy">포근에 오신 것을 환영해요.<br>회원가입 화면을 미리 확인해 보세요.</p>
+        <p class="auth-intro-copy">포근에 오신 것을 환영해요.<br>회원으로 가입하고 새로운 가족을 찾아보세요.</p>
         <div class="auth-paw-art" aria-hidden="true">🐾</div>
         <p class="auth-quote">“한 아이의 세상이<br>당신을 만나 달라질 수 있어요.”</p>
       </aside>
@@ -44,16 +44,16 @@
           <div><p class="eyebrow">CREATE AN ACCOUNT</p><h2 id="signupTitle">회원가입</h2></div>
           <span class="auth-required-note"><span aria-hidden="true">*</span> 필수 입력</span>
         </div>
-        <div class="auth-demo-notice"><strong>개인정보 안내</strong><span>회원가입에는 닉네임·이메일·성별만 필요합니다. 집 주소는 수집하지 않습니다. 비밀번호는 원문이 아닌 PBKDF2 해시로 안전하게 저장됩니다.</span></div>
+        <div class="auth-demo-notice"><strong>개인정보 안내</strong><span>닉네임, 이메일, 성별은 회원 계정 생성과 서비스 이용에 사용됩니다. 비밀번호는 PBKDF2 해시로 저장됩니다.</span></div>
 
         <p class="auth-status" id="authStatus" role="status" aria-live="polite" hidden></p>
-        <form class="auth-form" id="signupForm">
+        <form class="auth-form" id="signupForm" action="/api/auth/register" method="post">
           <div class="auth-field"><label for="nickname">닉네임 <span class="required-mark">*</span></label><input id="nickname" name="nickname" type="text" autocomplete="nickname" minlength="2" maxlength="20" placeholder="게시판에서 사용할 별명을 입력해 주세요" required><span class="auth-field-hint">2~20자까지 입력할 수 있어요.</span></div>
           <div class="auth-field"><label for="email">이메일 주소 <span class="required-mark">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="example@email.com" required></div>
           <div class="auth-field"><label>성별 <span class="required-mark">*</span></label><div class="gender-options"><label class="gender-option"><input name="gender" type="radio" value="female" required><span>여성</span></label><label class="gender-option"><input name="gender" type="radio" value="male"><span>남성</span></label><label class="gender-option"><input name="gender" type="radio" value="prefer-not-to-say"><span>응답하지 않음</span></label></div></div>
-          <div class="auth-field"><label for="password">비밀번호 <span class="required-mark">*</span></label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="8자 이상 입력해 주세요" required><span class="auth-field-hint">실제 비밀번호를 이 시안에 입력하지 마세요.</span></div>
-          <div class="auth-field"><label for="passwordConfirm">비밀번호 확인 <span class="required-mark">*</span></label><input id="passwordConfirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" maxlength="72" placeholder="비밀번호를 다시 입력해 주세요" required></div>
-          <label class="auth-consent"><input type="checkbox" name="privacyConsent" required><span>개인정보 수집 및 이용에 동의합니다. <span class="required-mark">*</span><small>화면 시안이며 실제 저장·전송 또는 회원가입은 진행되지 않습니다.</small></span></label>
+          <div class="auth-field"><label for="password">비밀번호 <span class="required-mark">*</span></label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="8자 이상 입력해 주세요" required><span class="auth-field-hint">8~128자로 입력해 주세요.</span></div>
+          <div class="auth-field"><label for="passwordConfirm">비밀번호 확인 <span class="required-mark">*</span></label><input id="passwordConfirm" name="passwordConfirm" type="password" autocomplete="new-password" minlength="8" maxlength="128" placeholder="비밀번호를 다시 입력해 주세요" required></div>
+          <label class="auth-consent"><input type="checkbox" name="privacyConsent" required><span>개인정보 수집 및 이용에 동의합니다. <span class="required-mark">*</span></span></label>
           <button class="button auth-submit" type="submit">회원가입 <span aria-hidden="true">→</span></button>
         </form>
         <p class="auth-switch">이미 회원이신가요? <a href="login.html">로그인</a></p>
