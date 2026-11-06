@@ -1,6 +1,8 @@
 const SESSION_COOKIE = 'pogeun_session';
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 14;
-const PBKDF2_ITERATIONS = 310_000;
+const HASH_PREFIX = 'pbkdf2-sha256-pepper-v1:';
+const PBKDF2_ITERATIONS = 100_000;
+const LEGACY_PBKDF2_ITERATIONS = 310_000;
 const MAX_AUTH_BODY_BYTES = 16_384;
 const VALID_GENDERS = new Set(['female', 'male', 'prefer-not-to-say']);
 const encoder = new TextEncoder();
@@ -46,10 +48,26 @@ function decodeBase64Url(value) {
   return Uint8Array.from(atob(padded), (character) => character.charCodeAt(0));
 }
 
-async function hashPassword(password, salt) {
-  const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
+function hasPasswordPepper(pepper) {
+  return typeof pepper === 'string' && /^[A-Za-z0-9_-]{43}$/.test(pepper);
+}
+
+function passwordPepperUnavailable() {
+  return authJson({ error: '인증 서버 설정을 확인할 수 없습니다.', code: 'AUTH_HASH_CONFIG_UNAVAILABLE' }, 503);
+}
+
+async function hashPassword(password, salt, pepper) {
+  let input = encoder.encode(password);
+  if (pepper) {
+    const secret = await crypto.subtle.importKey(
+      'raw', decodeBase64Url(pepper), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
+    );
+    input = await crypto.subtle.sign('HMAC', secret, input);
+  }
+  const iterations = pepper ? PBKDF2_ITERATIONS : LEGACY_PBKDF2_ITERATIONS;
+  const key = await crypto.subtle.importKey('raw', input, 'PBKDF2', false, ['deriveBits']);
   const derived = await crypto.subtle.deriveBits(
-    { name: 'PBKDF2', salt, iterations: PBKDF2_ITERATIONS, hash: 'SHA-256' },
+    { name: 'PBKDF2', salt, iterations, hash: 'SHA-256' },
     key,
     256,
   );
@@ -147,6 +165,8 @@ export async function register(request, env) {
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return authJson({ error: '올바른 이메일 주소를 입력해 주세요.' }, 400);
   if (!VALID_GENDERS.has(gender)) return authJson({ error: '성별 항목을 선택해 주세요.' }, 400);
   if (password.length < 8 || password.length > 128) return authJson({ error: '비밀번호는 8~128자로 입력해 주세요.' }, 400);
+  const pepper = env.AUTH_PASSWORD_PEPPER;
+  if (!hasPasswordPepper(pepper)) return passwordPepperUnavailable();
 
   try { await ensureSchema(env.DB); } catch (error) {
     console.error('Failed to initialize member tables', { error: error?.name });
@@ -157,12 +177,12 @@ export async function register(request, env) {
   try {
     const salt = new Uint8Array(16);
     crypto.getRandomValues(salt);
-    const passwordHash = await hashPassword(password, salt);
+    const passwordHash = HASH_PREFIX + base64Url(await hashPassword(password, salt, pepper));
     registrationStage = 'member_and_session_insert';
     const session = await createSession();
     await env.DB.batch([
       env.DB.prepare('INSERT INTO members (nickname, email, gender, password_hash, password_salt) VALUES (?, ?, ?, ?, ?)')
-        .bind(nickname, email, gender, base64Url(passwordHash), base64Url(salt)),
+        .bind(nickname, email, gender, passwordHash, base64Url(salt)),
       env.DB.prepare('INSERT INTO auth_sessions (token_hash, member_id, expires_at) VALUES (?, (SELECT id FROM members WHERE email = ? COLLATE NOCASE), ?)')
         .bind(session.hash, email, session.expiresAt),
     ]);
@@ -193,8 +213,11 @@ export async function login(request, env) {
       .bind(email)
       .first();
     if (!member) return authJson({ error: '이메일 또는 비밀번호가 올바르지 않습니다.' }, 401);
-    const calculated = await hashPassword(password, decodeBase64Url(member.password_salt));
-    const stored = decodeBase64Url(member.password_hash);
+    const versioned = member.password_hash.startsWith(HASH_PREFIX);
+    const pepper = versioned ? env.AUTH_PASSWORD_PEPPER : undefined;
+    if (versioned && !hasPasswordPepper(pepper)) return passwordPepperUnavailable();
+    const calculated = await hashPassword(password, decodeBase64Url(member.password_salt), pepper);
+    const stored = decodeBase64Url(versioned ? member.password_hash.slice(HASH_PREFIX.length) : member.password_hash);
     if (calculated.byteLength !== stored.byteLength || !crypto.subtle.timingSafeEqual(calculated, stored)) {
       return authJson({ error: '이메일 또는 비밀번호가 올바르지 않습니다.' }, 401);
     }
@@ -206,6 +229,9 @@ export async function login(request, env) {
     ]);
     return sessionResponse(session, 200, body.remember === false ? undefined : SESSION_TTL_SECONDS);
   } catch (error) {
+    if (/(?:iterations|iteration counts?) above \d+ are not supported/i.test(error?.message ?? '')) {
+      return authJson({ error: '이 환경에서 비밀번호 해시를 확인할 수 없습니다.', code: 'AUTH_PBKDF2_LIMIT' }, 503);
+    }
     console.error('Member login failed', { error: error?.name });
     return authJson({ error: '로그인을 처리하지 못했습니다.' }, 500);
   }
